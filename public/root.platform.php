@@ -16,7 +16,7 @@
         <?php
 
             $viewpage ?? '';
-            $prefix = WEB_DB_PREFIX;
+        
             $userid = $session->get('actorid');
             $fullname = $session->get('userfullname');
             $firstname = $session->get('userfirstname');

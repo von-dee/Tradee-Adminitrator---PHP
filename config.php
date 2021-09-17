@@ -1,12 +1,12 @@
 <?php
-global $pg,$option,$target,$view,$viewpage,$msg,$status,$keys,$microtime,$formToken;
+global $pg,$option,$target,$view,$viewpage,$msg,$status,$keys,$microtime,$formToken,$prefix;
 // SYSTEM VARIABLES
 define("DEV_MODE",'true');
 define("APP_NAME","finsys.");
 define("APP_FAVICON","media/img/building.png");
 define("APP_LOGO","media/img/building.png");
 
-define("SPATH_ROOT",dirname('__FILE__'));
+define("SPATH_ROOT",dirname(__FILE__));
 define("DS",DIRECTORY_SEPARATOR);
 define("SPATH_LIBRARIES", SPATH_ROOT.DS."library");
 define("SPATH_MEDIA",     SPATH_ROOT.DS."media");
@@ -86,6 +86,7 @@ $config = JConfig::getInstance();
 //included classes
 include SPATH_LIBRARIES.DS."lib.session.php";
 include SPATH_PLUGINS.DS."adodb".DS."adodb.inc.php";
+include SPATH_PLUGINS.DS."binance".DS."php-binance-api.php";
 include SPATH_LIBRARIES.DS."lib.connect.php";
 include SPATH_LIBRARIES.DS."lib.sql.php";
 if(!validateFormToken()){}
@@ -101,5 +102,5 @@ if(DEV_MODE=='true'){
 	// include SPATH_INSTALL.DS.'project.php';
 }
 include SPATH_LIBRARIES.DS."lib.setup.php";
-
+$prefix = WEB_DB_PREFIX;
 ?>

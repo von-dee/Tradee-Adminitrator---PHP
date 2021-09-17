@@ -1,4 +1,5 @@
 <script>
+    var timeData = [];
     var chart = LightweightCharts.createChart(document.getElementById('chart'), {
         width: 1250,
         height: 500,
@@ -36,11 +37,13 @@
         wickUpColor: 'rgba(255, 144, 0, 1)',
     });
 
-    fetch('http://localhost:5000/history')
+
+    fetch('http://localhost/tradee/public/strategies/controllers/kline.php')
         .then((r) => r.json())
         .then((response) => {
-            console.log(response)
-
+            console.log("KLINE response")
+            console.log(response);
+            timeData=response;
             candleSeries.setData(response);
         })
 
@@ -53,7 +56,13 @@
         var candlestick = message.k;
 
         console.log(candlestick)
-
+timeData.push({
+            time: candlestick.t / 1000,
+            open: candlestick.o,
+            high: candlestick.h,
+            low: candlestick.l,
+            close: candlestick.c
+        });
         candleSeries.update({
             time: candlestick.t / 1000,
             open: candlestick.o,
@@ -62,4 +71,8 @@
             close: candlestick.c
         })
     }
+
+    document.addEventListener('added',(e)=>{
+        console.log(e);
+    })
 </script>
