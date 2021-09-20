@@ -136,56 +136,7 @@
                                 <div class="row">
                                     <canvas id="line-chart"></canvas>
                                     <script>
-                                        var ctx = $("#line-chart");
-                                        var lineChart = new Chart(ctx, {
-                                            type: 'line',
-                                            data: {
-                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                                                datasets: [
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#009EFF",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#90D1FF",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: [10,8,6,5,12,8,16,17,6,7,6,10]
-                                                },
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#FF4200",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#FF8E66",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: [6,9,7,13,3,14,5,7,12,17,9,10],
-                                                    options: {
-                                                        scales: {
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                        reverse: true,
-                                                                    beginAtZero:true
-                                                                }
-                                                            }],
-                                                            xAxes: [{
-                                                                    ticks: {
-                                                                    reverse: true,
-                                                                beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                }
-                                                ]
-
-                                            }
-                                        });
+                                      
                                     </script>
                                 </div>
 
@@ -776,7 +727,7 @@
 <script>
     var evtSource = new EventSource('public/strategies/controllers/ev.php?keys=<?php echo $keys  ?>');
     var eventList = document.querySelector('ul');
-    var markers = [];
+    var markers = [];var profit_figure_arr=[];var mark_down_arr=[];
     evtSource.onerror =function(e){
         console.log('error',e);
     }
@@ -799,7 +750,7 @@
         var total_profit_percent_wins = 0;
         var total_profit_percent_loses = 0;
         var max_drawdown = 0;
-
+        
         var first_trade_close = val[0];
         var last_trade_close = val[val.length-1];
         var percDiff_BHR =  100 * (first_trade_close - last_trade_close) / ( (first_trade_close+last_trade_close)/2 );
@@ -864,7 +815,7 @@
                 if(max_drawdown > parseFloat(element.TRD_DRAWDOWN)){
                     max_drawdown = parseFloat(element.TRD_DRAWDOWN);
                 }
-
+                mark_down_arr.push(element.TRD_DRAWDOWN);
 
                 // Plot View
                 if(element.TRD_ENTRY_SIGNAL == "Buy"){
@@ -887,7 +838,8 @@
                         }
                         
                     }
-                    
+                    var profit_figure = (element.TRD_PROFIT/contract_size)* 100;
+                    profit_figure_arr.push(profit_figure);
                     total_buy_profit_percent_wins  = total_buy_profit_percent_wins + percent_wins_buy;
                     total_buy_profit_percent_loses  = total_buy_profit_percent_loses + percent_loses_buy;
 
@@ -1220,6 +1172,55 @@
         return formattedTime;
 
     }
-    
+    var ctx = $("#line-chart");
+                                        var lineChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                                datasets: [
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#009EFF",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#90D1FF",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    data: profit_figure_arr
+                                                },
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#FF4200",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#FF8E66",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    data: mark_down_arr,
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                        reverse: true,
+                                                                    beginAtZero:true
+                                                                }
+                                                            }],
+                                                            xAxes: [{
+                                                                    ticks: {
+                                                                    reverse: true,
+                                                                beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                }
+                                                ]
+
+                                            }
+                                        });
 
 </script>
