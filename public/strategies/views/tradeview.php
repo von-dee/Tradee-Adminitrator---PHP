@@ -100,7 +100,7 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <b id="ld_netprofit">$0</b><br>
-                                        <span>4.66%</span><br>
+                                        <span id="ld_netprofit_percent">0%</span><br>
                                         <span class="small" >Net Profit</span><br>
                                     </div>
                                     <div class="col-2">
@@ -218,7 +218,7 @@
                                     </div>
                                     <div class="col-2">
                                         <span id="netprofit">$0</span><br>
-                                        <span id="" class="small">30.96 %</span><br>
+                                        <span id="" class="small">0%</span><br>
                                     </div>
                                     <div class="col-2">
                                         <span id="">$ 0</span><br>
@@ -976,8 +976,8 @@
         }  
 
         // Net Profit
-        var netprofit = ((initial_deposit/100) * total_profit_percent) - (total_number_of_trades * (2*((contract_size/100) * 0.1))));
-        var netprofit_percent = total_profit_percent;
+        var netprofit = ((initial_deposit/100) * total_profit_percent) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
+        var netprofit_percent = (netprofit/initial_deposit)*100;
         
 
         // Gross Profit	
@@ -1114,6 +1114,7 @@
         document.getElementById("databody").innerHTML = str;
 
         document.getElementById("ld_netprofit").innerHTML = "$"+(netprofit.toFixed(2)).toString();
+        document.getElementById("ld_netprofit_percent").innerHTML = (netprofit_percent.toFixed(2)).toString() + "%";
         document.getElementById("ld_total_closed_trades").innerHTML = total_closed_trades;
         document.getElementById("ld_percent_profitable").innerHTML = (percent_profitable.toFixed(2)).toString()+"%";
         document.getElementById("ld_profit_factor").innerHTML = profit_factor.toFixed(2);
