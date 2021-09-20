@@ -1,4 +1,5 @@
 <script>
+    
     var timeData = [];
     var chart = LightweightCharts.createChart(document.getElementById('chart'), {
         width: 1250,
@@ -51,12 +52,12 @@
     var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
 
     binanceSocket.onmessage = function (event) {	
-        var message = JSON.parse(event.data);
+    var message = JSON.parse(event.data);
 
-        var candlestick = message.k;
+    var candlestick = message.k;
 
-        console.log(candlestick)
-timeData.push({
+    console.log(candlestick)
+    timeData.push({
             time: candlestick.t / 1000,
             open: candlestick.o,
             high: candlestick.h,
@@ -75,4 +76,33 @@ timeData.push({
     document.addEventListener('added',(e)=>{
         console.log(e);
     })
+
+
+    document.getElementById('London').style.display = "block";
+    evt.currentTarget.className += " active";
+
+    function openCity(evt, cityName) {
+
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+    }
+
+
 </script>
