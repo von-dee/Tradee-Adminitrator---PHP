@@ -996,7 +996,7 @@
 
         // Max Drawdown	
         var max_drawdown_final = max_drawdown;
-
+        var max_drawdown_fig = (initial_deposit/100)
 
 
         // Buy & Hold Return	
@@ -1006,9 +1006,9 @@
         // Sortino Ratio
 
         // Profit Factor
-        var profit_factor = (gross_profit/gross_loss) * -1;
-        var profit_factor_buy = (gross_profit_buy/gross_loss_buy) * -1;
-        var profit_factor_sell = (gross_profit_sell/gross_loss_sell) * -1;
+        var profit_factor = Math.abs((gross_profit/gross_loss));
+        var profit_factor_buy = Math.abs((gross_profit_buy/gross_loss_buy));
+        var profit_factor_sell = Math.abs((gross_profit_sell/gross_loss_sell));
 
         // Max Contracts Held
         var max_contacts_held = 0
