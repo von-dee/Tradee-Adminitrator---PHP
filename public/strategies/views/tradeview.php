@@ -1111,7 +1111,7 @@
         console.log("ld_netprofit");
         console.log(ld_netprofit);
 
-        document.getElementById("databody").innerHTML = databody;
+        document.getElementById("databody").innerHTML = str;
 
         document.getElementById("ld_netprofit").innerHTML = "$"+(netprofit.toFixed(2)).toString();
         document.getElementById("ld_total_closed_trades").innerHTML = total_closed_trades;
