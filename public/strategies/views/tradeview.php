@@ -1006,9 +1006,9 @@
         // Sortino Ratio
 
         // Profit Factor
-        var profit_factor = (gross_profit/gross_loss);
-        var profit_factor_buy = (gross_profit_buy/gross_loss_buy);
-        var profit_factor_sell = (gross_profit_sell/gross_loss_sell);
+        var profit_factor = (gross_profit/gross_loss) * -1;
+        var profit_factor_buy = (gross_profit_buy/gross_loss_buy) * -1;
+        var profit_factor_sell = (gross_profit_sell/gross_loss_sell) * -1;
 
         // Max Contracts Held
         var max_contacts_held = 0
