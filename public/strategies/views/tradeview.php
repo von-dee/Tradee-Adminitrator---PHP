@@ -976,8 +976,8 @@
         }  
 
         // Net Profit
-        var netprofit = (initial_deposit/100) * total_profit_percent - (total_number_of_trades * (contract_size/100 * 0.1));
-
+        var netprofit = (initial_deposit/100) * total_profit_percent - (total_number_of_trades * 2*((contract_size/100) * 0.1)));
+        var netprofit_percent = total_profit_percent;
         
 
         // Gross Profit	
