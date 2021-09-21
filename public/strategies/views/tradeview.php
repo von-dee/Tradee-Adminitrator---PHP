@@ -136,7 +136,60 @@
                                 <div class="row">
                                     <canvas id="line-chart"></canvas>
                                     <script>
-                                      
+                                    var ctx = $("#line-chart");
+                                         var lineChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                                labels:[],
+                                                datasets: [
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#009EFF",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#90D1FF",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    // data: profit_figure_arr
+                                                    dat:[]
+                                                },
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#FF4200",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#FF8E66",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    // data: mark_down_arr,
+                                                    data:[],
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                        reverse: true,
+                                                                    beginAtZero:true
+                                                                }
+                                                            }],
+                                                            xAxes: [{
+                                                                    ticks: {
+                                                                    reverse: true,
+                                                                beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                }
+                                                ]
+
+                                            }
+                                        });
+                                    
                                     </script>
                                 </div>
 
@@ -727,7 +780,7 @@
 <script>
     var evtSource = new EventSource('public/strategies/controllers/ev.php?keys=<?php echo $keys  ?>');
     var eventList = document.querySelector('ul');
-    var markers = [];var profit_figure_arr=[];var mark_down_arr=[];
+    var markers = [];var profit_figure_arr=[];var mark_down_arr=[]; 
     evtSource.onerror =function(e){
         console.log('error',e);
     }
@@ -917,8 +970,11 @@
                     // } 
                     } 
                 } 
-                  
+              
                 candleSeries.setMarkers(markers);
+                // arr_times = arr_times.length ? arr_times : getColumn(timeData,"time");
+                // console.log('arrtimes',arr_times);
+                drawLineCgart(ctx,profit_figure_arr,mark_down_arr,arr_times);
             }
            
           
@@ -1172,55 +1228,21 @@
         return formattedTime;
 
     }
-    var ctx = $("#line-chart");
-                                        var lineChart = new Chart(ctx, {
-                                            type: 'line',
-                                            data: {
-                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                                                datasets: [
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#009EFF",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#90D1FF",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: profit_figure_arr
-                                                },
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#FF4200",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#FF8E66",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: mark_down_arr,
-                                                    options: {
-                                                        scales: {
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                        reverse: true,
-                                                                    beginAtZero:true
-                                                                }
-                                                            }],
-                                                            xAxes: [{
-                                                                    ticks: {
-                                                                    reverse: true,
-                                                                beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                }
-                                                ]
-
-                                            }
-                                        });
-
+    function drawLineCgart(ctx,profit_figure_arr,mark_down_arr,time){
+        if(lineChart instanceof Chart)
+{ 
+    lineChart.data.labels=time
+    lineChart.data.datasets[0].data=profit_figure_arr;
+    lineChart.data.datasets[1].data=mark_down_arr;
+    lineChart.update();
+}else{
+                                     
+    }
+  
+    }
+    function getColumn(anArray, columnName) {
+    return anArray.map(function(row) {
+        return unixToNormalDate(row[columnName]);
+    });
+}
 </script>
