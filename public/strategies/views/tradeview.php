@@ -136,7 +136,60 @@
                                 <div class="row">
                                     <canvas id="line-chart"></canvas>
                                     <script>
-                                      
+                                    var ctx = $("#line-chart");
+                                         var lineChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                                labels:[],
+                                                datasets: [
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#009EFF",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#90D1FF",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    // data: equity_figure_arr
+                                                    dat:[]
+                                                },
+                                                {
+                                                    label: "Trade Graph",
+                                                    fill: false,
+                                                    borderColor: "#FF4200",
+                                                    // borderDash: [5, 5],
+                                                    backgroundColor: "#FF8E66",
+                                                    pointBackgroundColor: "#55bae7",
+                                                    pointBorderColor: "#55bae7",
+                                                    pointHoverBackgroundColor: "#55bae7",
+                                                    pointHoverBorderColor: "#55bae7",
+                                                    // data: mark_down_arr,
+                                                    data:[],
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                        reverse: true,
+                                                                    beginAtZero:true
+                                                                }
+                                                            }],
+                                                            xAxes: [{
+                                                                    ticks: {
+                                                                    reverse: true,
+                                                                beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                }
+                                                ]
+
+                                            }
+                                        });
+                                    
                                     </script>
                                 </div>
 
@@ -721,7 +774,7 @@
 <script>
     var evtSource = new EventSource('public/strategies/controllers/ev.php?keys=<?php echo $keys  ?>');
     var eventList = document.querySelector('ul');
-    var markers = [];var profit_figure_arr=[];var mark_down_arr=[];
+    var markers = [];
     evtSource.onerror =function(e){
         console.log('error',e);
     }
@@ -735,7 +788,7 @@
         //   newElement.textContent = "message: " + e.data;
         //   eventList.appendChild(newElement); 
 
-
+        var equity_figure_arr=[];var mark_down_arr=[];
         
         var initial_deposit = 200;
         var total_profit_percent = 0;
@@ -794,6 +847,14 @@
                 var element = val[i];
 
                 
+                // console.log("element");
+                // console.log(element);
+
+
+
+
+                total_profit_percent = total_profit_percent + parseFloat(element.TRD_PROFIT);
+                
                 element_TRD_PROFIT = (parseFloat(element.TRD_CONTRACTS)/100) * parseFloat(element.TRD_PROFIT);
                 total_profit_percent = total_profit_percent + element_TRD_PROFIT;
                 
@@ -837,9 +898,8 @@
 
                         total_profit_percent_sell = total_profit_percent_sell + element_TRD_PROFIT;
                         
-                    }
-                    var profit_figure = (element.TRD_PROFIT/contract_size)* 100;
-                    profit_figure_arr.push(profit_figure);
+                    } 
+                  
                     total_buy_profit_percent_wins  = total_buy_profit_percent_wins + percent_wins_buy;
                     total_buy_profit_percent_loses  = total_buy_profit_percent_loses + percent_loses_buy;
 
@@ -867,7 +927,7 @@
                         
 
                     }
-
+                    
                     total_sell_profit_percent_wins  = total_sell_profit_percent_wins + percent_wins_sell;
                     total_sell_profit_percent_loses  = total_sell_profit_percent_loses + percent_loses_sell;
 
@@ -921,13 +981,18 @@
                             markers.push({ time: timeData[ii].time, position: 'belowBar', color: '#2196F3', shape: 'arrowUp', text: 'Buy' });
                             
                             }
+                          
                         }
+                        equity_figure_arr.push(element.TRD_EQUITY);
 
                     // } 
                     } 
                 } 
-                  
+              
                 candleSeries.setMarkers(markers);
+                // arr_times = arr_times.length ? arr_times : getColumn(timeData,"time");
+                console.log('arrtimes',arr_times);
+                drawLineChart(ctx,equity_figure_arr,mark_down_arr,arr_times);
             }
            
           
@@ -1292,55 +1357,22 @@
         return formattedTime;
 
     }
-    var ctx = $("#line-chart");
-                                        var lineChart = new Chart(ctx, {
-                                            type: 'line',
-                                            data: {
-                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                                                datasets: [
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#009EFF",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#90D1FF",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: profit_figure_arr
-                                                },
-                                                {
-                                                    label: "Trade Graph",
-                                                    fill: false,
-                                                    borderColor: "#FF4200",
-                                                    // borderDash: [5, 5],
-                                                    backgroundColor: "#FF8E66",
-                                                    pointBackgroundColor: "#55bae7",
-                                                    pointBorderColor: "#55bae7",
-                                                    pointHoverBackgroundColor: "#55bae7",
-                                                    pointHoverBorderColor: "#55bae7",
-                                                    data: mark_down_arr,
-                                                    options: {
-                                                        scales: {
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                        reverse: true,
-                                                                    beginAtZero:true
-                                                                }
-                                                            }],
-                                                            xAxes: [{
-                                                                    ticks: {
-                                                                    reverse: true,
-                                                                beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                }
-                                                ]
-
-                                            }
-                                        });
-
+    function drawLineChart(ctx,equity_figure_arr,mark_down_arr,time){
+        if(lineChart instanceof Chart)
+{ 
+    lineChart.data.labels=time
+    lineChart.data.datasets[0].data=equity_figure_arr;
+    lineChart.data.datasets[1].data=mark_down_arr;
+    lineChart.update();
+}else{
+                                     
+    }
+  
+    }
+    function getColumn(anArray, columnName) {
+    return anArray.map(function(row) {
+        // return unixToNormalDate(row[columnName]);
+        return row[columnName];
+    });
+}
 </script>
