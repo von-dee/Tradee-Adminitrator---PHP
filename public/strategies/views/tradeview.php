@@ -114,17 +114,17 @@
                                         <span  class="small">Percent Profitable</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <b id="ld_profit_factor">11.128</b><br>
+                                        <b id="ld_profit_factor">0</b><br>
                                         <span></span><br>
                                         <span  class="small">Profit Factor</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <b id="ld_max_drawdown">$0.18</b><br>
-                                        <span>0.09%</span><br>
+                                        <b id="ld_max_drawdown">$ 0</b><br>
+                                        <span>0 %</span><br>
                                         <span class="small">Max Drawdown</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <b id="ld_avg_trade">$0.12</b><br>
+                                        <b id="ld_avg_trade">$ 0</b><br>
                                         <span></span><br>
                                         <span class="small">Avg Trade</span><br>
                                     </div>
@@ -169,15 +169,15 @@
                                     </div>
                                     <div class="col-2">
                                         <span id="netprofit">$0</span><br>
-                                        <span id="" class="small">0%</span><br>
+                                        <span id="netprofit_percent" class="small">0%</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">$ 0</span><br>
-                                        <span id="" class="small">14.16 %</span><br>
+                                        <span id="netprofit_buy">$ 0</span><br>
+                                        <span id="netprofit_percent_buy" class="small">14.16 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">$ 0</span><br>  
-                                        <span id="" class="small">16.81 %</span><br>
+                                        <span id="netprofit_sell">$ 0</span><br>  
+                                        <span id="netprofit_percent_sell" class="small">16.81 %</span><br>
                                     </div>
                                 </div>
 
@@ -187,15 +187,15 @@
                                     </div>
                                     <div class="col-2">
                                         <span id="gross_profit">$0</span><br>
-                                        <span id="" class="small">34.46 %</span><br>
+                                        <span id="gross_profit_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                         <span id="gross_profit_buy">$0</span><br>
-                                        <span id="" class="small">16.28 %</span><br>
+                                        <span id="gross_profit_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                         <span id="gross_profit_sell">$0</span><br>  
-                                        <span id="" class="small">18.19 %</span><br>
+                                        <span id="gross_profit_percent_sell" class="small">0 %</span><br>
                                     </div>
                                 </div>
 
@@ -204,16 +204,16 @@
                                         <b>Gross Loss</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="gross_loss">$ 7.00</span><br>
-                                        <span id="" class="small">3.5 %</span><br>
+                                        <span id="gross_loss">$ 0</span><br>
+                                        <span id="gross_loss_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="gross_loss_buy">$ 4.24</span><br>
-                                        <span id="" class="small">2.12 %</span><br>
+                                        <span id="gross_loss_buy">$ 0</span><br>
+                                        <span id="gross_loss_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="gross_loss_sell">$ 2.77</span><br>  
-                                        <span id="" class="small">1.38 %</span><br>
+                                        <span id="gross_loss_sell">$ 0</span><br>  
+                                        <span id="gross_loss_percent_sell" class="small">0 %</span><br>
                                     </div>
                                 </div>
 
@@ -222,8 +222,8 @@
                                         <b>Max Drawdown	</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="max_drawdown_final">$ 0.69</span><br>
-                                        <span id="" class="small">0.27 %</span><br>
+                                        <span id="max_drawdown_fig">$ 0</span><br>
+                                        <span id="max_drawdown_final" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                     </div>
@@ -236,8 +236,8 @@
                                         <b>Buy & Hold Return	</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="buy_hold_return">$</span><br>
-                                        <span id="" class="small">5.14 %</span><br>
+                                        <span id="buy_hold_return">$ 0</span><br>
+                                        <span id="percDiff_BHR" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                     </div>
@@ -320,13 +320,13 @@
                                         <b>Commission Paid</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="commission_paid">$ 39.68</span><br>
+                                        <span id="commission_paid">$ 0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="commission_paid_buy">$ 19.93</span><br>
+                                        <span id="commission_paid_buy">$ 0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="commission_paid_sell">$ 19.74</span><br>  
+                                        <span id="commission_paid_sell">$ 0</span><br>  
                                     </div>
                                 </div>
 
@@ -411,16 +411,16 @@
                                         <b>Avg Trade</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_trade"></span><br>
-                                        <span id="" class="small">zzz 0.07 %</span><br>
+                                        <span id="avg_trade">$ 0</span><br>
+                                        <span id="avg_trade_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">zzz $ 0.13</span><br>
-                                        <span id="" class="small">zzz 0.06 %</span><br>
+                                        <span id="avg_trade_buy">$ 0</span><br>
+                                        <span id="avg_trade_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">zzz $ 0.15</span><br>  
-                                        <span id="" class="small">zzz 0.07 %</span><br>
+                                        <span id="avg_trade_sell">$ 0</span><br>  
+                                        <span id="avg_trade_percent_sell" class="small">0 %</span><br>
                                     </div>
                                 </div>
 
@@ -430,15 +430,15 @@
                                     </div>
                                     <div class="col-2">
                                         <span id="avg_winning_trade"></span><br>
-                                        <span id="" class="small">zzz 09 %</span><br>
+                                        <span id="avg_winning_trade_percent" class="small"> 0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                         <span id="avg_winning_trade_buy"></span><br>
-                                        <span id="" class="small">zzz 1 %</span><br>
+                                        <span id="avg_winning_trade_percent_buy" class="small"> 0 %</span><br>
                                     </div>
                                     <div class="col-2">
                                         <span id="avg_winning_trade_sell"></span><br>  
-                                        <span id="" class="small">zzz 08 %</span><br>
+                                        <span id="avg_winning_trade_percent_sell" class="small"> 0 %</span><br>
                                     </div>
                                 </div>
 
@@ -447,16 +447,16 @@
                                         <b>Avg Losing Trade</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_losing_trade ="></span><br>
-                                        <span id="" class="small">zzz 0.16%</span><br>
+                                        <span id="avg_losing_trade ="></span>$ 0<br>
+                                        <span id="avg_losing_trade_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_losing_trade_buy"></span><br>
-                                        <span id="" class="small">zzz 0.03 %</span><br>
+                                        <span id="avg_losing_trade_buy"></span>$ 0<br>
+                                        <span id="avg_losing_trade_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_losing_trade_sell"></span><br>  
-                                        <span id="" class="small">zzz 0.02 %</span><br>
+                                        <span id="avg_losing_trade_sell">$ 0</span><br>  
+                                        <span id="avg_losing_trade_percent_sell" class="small">0 %</span><br>
                                     </div>
                                     
                                 </div>
@@ -466,13 +466,13 @@
                                         <b>Ratio Avg Win / Avg Loss</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="ratio_avg_win_avg_loss"></span><br>
+                                        <span id="ratio_avg_win_avg_loss">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="ratio_avg_win_avg_loss_buy"></span><br>
+                                        <span id="ratio_avg_win_avg_loss_buy">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="ratio_avg_win_avg_loss_sell"></span><br>  
+                                        <span id="ratio_avg_win_avg_loss_sell">0</span><br>  
                                     </div>
                                 </div>
 
@@ -481,16 +481,16 @@
                                         <b>Largest Winning Trade</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="largest_win"></span><br>
-                                        <span id="" class="small">zzz 0.16%</span><br>
+                                        <span id="largest_win"> $ 0 </span><br>
+                                        <span id="largest_win_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="largest_win_buy"></span><br>
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="largest_win_buy"> $ 0 </span><br>
+                                        <span id="largest_win_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="largest_win_sell"></span><br>  
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="largest_win_sell"> $ 0 </span><br>  
+                                        <span id="largest_win_percent_sell" class="small">0 %</span><br>
                                     </div>
                                 </div>
 
@@ -499,16 +499,16 @@
                                         <b>Largest Losing Trade</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="largest_lose"></span><br>
-                                        <span id="" class="small">zzz 0.16%</span><br>
+                                        <span id="largest_lose">$ 0</span><br>
+                                        <span id="largest_lose_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">0.66</span><br>
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="largest_lose_buy">$ 0</span><br>
+                                        <span id="largest_lose_percent_buy" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="">0.66</span><br>  
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="largest_lose_sell">$ 0</span><br>  
+                                        <span id="largest_lose_percent_sell" class="small">0 %</span><br>
                                     </div>
                                 </div>
                                 
@@ -519,13 +519,13 @@
                                         <b>Avg # Bars in Trades</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_trades"></span><br>
+                                        <span id="avg_bars_in_trades">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_trades_buy"></span><br>
+                                        <span id="avg_bars_in_trades_buy">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_trades_sell"></span><br>  
+                                        <span id="avg_bars_in_trades_sell">0</span><br>  
                                     </div>
                                 </div>
 
@@ -534,13 +534,13 @@
                                         <b>Avg # Bars in Winning Trades</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_winning"></span><br>
+                                        <span id="avg_bars_in_winning">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_winning_buy"></span><br>
+                                        <span id="avg_bars_in_winning_buy">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_winning_sell"></span><br>  
+                                        <span id="avg_bars_in_winning_sell">0</span><br>  
                                     </div>
                                 </div>
 
@@ -549,16 +549,13 @@
                                         <b>Avg # Bars in Losing Trades</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_losing"></span><br>
-                                        <span id="" class="small">zzz 0.16%</span><br>
+                                        <span id="avg_bars_in_losing">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_losing_buy"></span><br>
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="avg_bars_in_losing_buy">0</span><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_bars_in_losing_sell"></span><br>  
-                                        <span id="" class="small">zzz 0.66%</span><br>
+                                        <span id="avg_bars_in_losing_sell">0</span><br>  
                                     </div>
                                 </div>
 
@@ -587,13 +584,10 @@
                                                 <th>#</th>
                                                 <th>Coin Name</th>
                                                 <th>Type</th>
-                                                <th>Entry Signal</th>
-                                                <th>Entry Type</th>
-                                                <th>Entry Datetime</th>
-                                                <th>Exit Type</th>
-                                                <th>Exit Signal</th>
+                                                <th>Signal</th>
+                                                <th>Type</th>
+                                                <th>Datetime</th>
                                                 <th>Exit Trigger</th>
-                                                <th>Exit Datetime</th>
                                                 <th>Price</th>
                                                 <th>Contracts</th>
                                                 <th>Profit</th>
@@ -751,8 +745,10 @@
         var total_profit_percent_loses = 0;
         var max_drawdown = 0;
         
-        var first_trade_close = val[0];
-        var last_trade_close = val[val.length-1];
+        var first_trade_close = parseFloat(val[0].TRD_PRICE);
+        var last_trade_close = parseFloat(val[val.length-1].TRD_PRICE);
+
+
         var percDiff_BHR =  100 * (first_trade_close - last_trade_close) / ( (first_trade_close+last_trade_close)/2 );
 
         var percent_wins = 0;
@@ -788,24 +784,23 @@
         var total_buy_profit_percent_wins = 0;
         var total_buy_profit_percent_loses = 0;
 
+        var total_profit_percent_buy = 0;
+        var total_profit_percent_sell = 0;
+
         var arr_times = [];
 
         for (const i in val) {
             if (Object.hasOwnProperty.call(val, i)) {
                 var element = val[i];
 
-                // console.log("element");
-                // console.log(element);
-
-
-
-
-                total_profit_percent = total_profit_percent + parseFloat(element.TRD_PROFIT);
                 
-                if(parseFloat(element.TRD_PROFIT)>0){
-                    percent_wins = parseFloat(element.TRD_PROFIT);
-                }else if(parseFloat(element.TRD_PROFIT)<0){
-                    percent_loses = parseFloat(element.TRD_PROFIT);
+                element_TRD_PROFIT = (parseFloat(element.TRD_CONTRACTS)/100) * parseFloat(element.TRD_PROFIT);
+                total_profit_percent = total_profit_percent + element_TRD_PROFIT;
+                
+                if(element_TRD_PROFIT>0){
+                    percent_wins = element_TRD_PROFIT;
+                }else if(element_TRD_PROFIT<0){
+                    percent_loses = element_TRD_PROFIT;
                 }
 
                 total_profit_percent_wins  = total_profit_percent_wins + percent_wins;
@@ -815,27 +810,32 @@
                 if(max_drawdown > parseFloat(element.TRD_DRAWDOWN)){
                     max_drawdown = parseFloat(element.TRD_DRAWDOWN);
                 }
+
                 mark_down_arr.push(element.TRD_DRAWDOWN);
 
                 // Plot View
                 if(element.TRD_ENTRY_SIGNAL == "Buy"){
                     entrysignal = '<span class="success-arrow"><i class="icofont-arrow-up"></i></span>'+element.TRD_ENTRY_SIGNAL;
                     
-                    if(parseFloat(element.TRD_PROFIT)>0){
-                        percent_wins_buy = parseFloat(element.TRD_PROFIT);
+                    if(element_TRD_PROFIT>0){
+                        percent_wins_buy = element_TRD_PROFIT;
                         winning_trades_buy = winning_trades_buy + 1;
                         
-                        if(largest_win_buy < parseFloat(element.TRD_PROFIT)){
-                            largest_win_buy = parseFloat(element.TRD_PROFIT);
-                        }                        
+                        if(largest_win_buy < element_TRD_PROFIT){
+                            largest_win_buy = element_TRD_PROFIT;
+                        }          
 
-                    }else if(parseFloat(element.TRD_PROFIT)<0){
-                        percent_loses_buy = parseFloat(element.TRD_PROFIT);
+                        total_profit_percent_buy = total_profit_percent_buy + element_TRD_PROFIT;              
+
+                    }else if(element_TRD_PROFIT<0){
+                        percent_loses_buy = element_TRD_PROFIT;
                         losing_trades_buy = winning_trades_buy + 1;
 
-                        if(largest_lose_buy > parseFloat(element.TRD_PROFIT)){
-                            largest_lose_buy = parseFloat(element.TRD_PROFIT);
+                        if(largest_lose_buy > element_TRD_PROFIT){
+                            largest_lose_buy = element_TRD_PROFIT;
                         }
+
+                        total_profit_percent_sell = total_profit_percent_sell + element_TRD_PROFIT;
                         
                     }
                     var profit_figure = (element.TRD_PROFIT/contract_size)* 100;
@@ -848,21 +848,21 @@
                 }else if(element.TRD_ENTRY_SIGNAL == "Sell"){
                     entrysignal = '<span class="danger-arrow"><i class="icofont-arrow-down"></i></span>'+element.TRD_ENTRY_SIGNAL;
 
-                    if(parseFloat(element.TRD_PROFIT)>0){
-                        percent_wins_sell = parseFloat(element.TRD_PROFIT);
+                    if(element_TRD_PROFIT>0){
+                        percent_wins_sell = element_TRD_PROFIT;
                         winning_trades_sell = winning_trades_sell + 1;
                         
-                        if(largest_win_sell < parseFloat(element.TRD_PROFIT)){
-                            largest_win_sell = parseFloat(element.TRD_PROFIT);
+                        if(largest_win_sell < element_TRD_PROFIT){
+                            largest_win_sell = element_TRD_PROFIT;
                         }
                         
 
-                    }else if(parseFloat(element.TRD_PROFIT)<0){
-                        percent_loses_sell = parseFloat(element.TRD_PROFIT);
+                    }else if(element_TRD_PROFIT<0){
+                        percent_loses_sell = element_TRD_PROFIT;
                         losing_trades_sell = winning_trades_sell + 1;
 
-                        if(largest_lose_sell > parseFloat(element.TRD_PROFIT)){
-                            largest_lose_sell = parseFloat(element.TRD_PROFIT);
+                        if(largest_lose_sell > element_TRD_PROFIT){
+                            largest_lose_sell = element_TRD_PROFIT;
                         }
                         
 
@@ -879,13 +879,22 @@
                 x = parseInt(i) + 1;
 
                 // str+='<tr><td>'+ i +'</td></tr>'
+
+
+                
+                element_TRD_PRICE = (parseFloat(element.TRD_PRICE)).toFixed(2);
+                element_TRD_CUMPROFIT = (parseFloat(element.TRD_CUMPROFIT)).toFixed(2);
+                element_TRD_RUNUP = (parseFloat(element.TRD_RUNUP)).toFixed(2);
+                element_TRD_DRAWDOWN = (parseFloat(element.TRD_DRAWDOWN)).toFixed(2);
+                element_TRD_PROFIT = (parseFloat(element.TRD_PROFIT)).toFixed(2);
+
                 str+='<tr><td data-th="Wallet"><span class="bt-content">'+ x +'</span></td><td class="coin-name" data-th="Coin Name">'+
-                '<span class="bt-content"><i class="cc BTC"></i> Bitcoin - BTCUSDT</span></td><td data-th="Wallet">'+entrysignal+
-                '<span class="bt-content"></span></td><td data-th="Wallet"><span class="bt-content">'+element.TRD_ENTRY_SIGNAL+'</span></td><td data-th="Wallet"><span class="bt-content">'+element.TRD_ENTRY_TYPE+
-                '</span></td><td data-th="Amount"><span class="bt-content">'+element.TRD_ENTRY_DATETIME+'</span></td><td data-th="trd_exit_type"><span class="bt-content">'+element.TRD_EXIT_TYPE+
-                '</span></td><td data-th="trd_exit_signal"><span class="bt-content">'+element.TRD_EXIT_SIGNAL+'</span></td><td data-th="trd_exittrigger"><span class="bt-content">'+element.TRD_EXITTRIGGER+
-                '</span></td><td data-th="trd_exit_datetime"><span class="bt-content">'+element.TRD_EXIT_DATETIME+'</span></td><td data-th="trd_price"><span class="bt-content">'+element.TRD_PRICE+
-                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">'+element.TRD_PROFIT+'</span></td><td data-th="trd_cumprofit"><span class="bt-content">'+element.TRD_CUMPROFIT+'</span></td><td data-th="trd_runup"><span class="bt-content">'+element.TRD_RUNUP+'</span></td><td data-th="trd_drawdown"><span class="bt-content">'+element.TRD_DRAWDOWN+'</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
+                '<span class="bt-content"><i class="cc BTC"></i> <br> Bitcoin - BTCUSDT</span></td><td data-th="Wallet">'+entrysignal+
+                '<span class="bt-content"></span></td><td data-th="Wallet"><span class="bt-content">Entry '+element.TRD_ENTRY_SIGNAL+'</span><br>Exit <span class="bt-content">'+element.TRD_EXIT_SIGNAL+'</span></td><td data-th="Wallet"><span class="bt-content">Entry '+element.TRD_ENTRY_TYPE+
+                '</span><br>Exit <span class="bt-content">'+element.TRD_EXIT_TYPE+
+                '</span></td><td data-th="Amount"><span class="bt-content">'+element.TRD_ENTRY_DATETIME+'</span><br><span class="bt-content">'+element.TRD_EXIT_DATETIME+'</span></td><td data-th="trd_exittrigger"><span class="bt-content">'+element.TRD_EXITTRIGGER+
+                '</span></td><td data-th="trd_price"><span class="bt-content">'+element_TRD_PRICE+
+                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">'+element_TRD_PROFIT+'</span></td><td data-th="trd_cumprofit"><span class="bt-content">'+element_TRD_CUMPROFIT+'</span></td><td data-th="trd_runup"><span class="bt-content">'+element_TRD_RUNUP+'</span></td><td data-th="trd_drawdown"><span class="bt-content">'+element_TRD_DRAWDOWN+'</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
                 // console.log(str);
 
                 // console.log("element.TRD_ENTRY_DATETIME");
@@ -929,13 +938,25 @@
 
         // Net Profit
         var netprofit = ((initial_deposit/100) * total_profit_percent) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
+        var netprofit_buy =  ((initial_deposit/100) * total_profit_percent_buy) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
+        var netprofit_sell = ((initial_deposit/100) * total_profit_percent_sell) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
+
         var netprofit_percent = (netprofit/initial_deposit)*100;
+        var netprofit_percent_buy = (netprofit_buy/initial_deposit)*100;
+        var netprofit_percent_sell = (netprofit_sell/initial_deposit)*100;
+
+        
+        
         
 
         // Gross Profit	
         var gross_profit = (initial_deposit/100) * total_profit_percent_wins;
         var gross_profit_buy = (initial_deposit/100) * total_buy_profit_percent_wins;
         var gross_profit_sell = (initial_deposit/100) * total_sell_profit_percent_wins;
+        
+        var gross_profit_percent = total_profit_percent_wins;
+        var gross_profit_percent_buy = total_buy_profit_percent_wins;
+        var gross_profit_percent_sell = total_sell_profit_percent_wins;
 
 
 
@@ -945,10 +966,15 @@
         var gross_loss_sell = (initial_deposit/100) * total_sell_profit_percent_loses;
 
 
+        var gross_loss_percent = total_profit_percent_loses;
+        var gross_loss_percent_buy = total_buy_profit_percent_loses;
+        var gross_loss_percent_sell = total_sell_profit_percent_loses;
+
+
 
         // Max Drawdown	
         var max_drawdown_final = max_drawdown;
-        var max_drawdown_fig = (initial_deposit/100)
+        var max_drawdown_fig = (initial_deposit/100) * max_drawdown_final;
 
 
         // Buy & Hold Return	
@@ -972,9 +998,9 @@
         var open_pl_percent = 0
 
         // Commission Paid
-        var commission_paid = total_number_of_trades * (contract_size/100 * 0.1);
-        var commission_paid_buy = total_number_of_trades_buy * (contract_size/100 * 0.1);
-        var commission_paid_sell = total_number_of_trades_sell * (contract_size/100 * 0.1);
+        var commission_paid = total_number_of_trades * (2*((contract_size/100 * 0.1)));
+        var commission_paid_buy = total_number_of_trades_buy * (2*((contract_size/100 * 0.1)));
+        var commission_paid_sell = total_number_of_trades_sell * (2*((contract_size/100 * 0.1)));
 
 
         // Total Closed Trades
@@ -1004,7 +1030,17 @@
 
 
         // Avg Trade
+
         var avg_trade = netprofit/total_closed_trades;
+        var avg_trade_buy = netprofit_buy/total_number_of_trades_buy;
+        var avg_trade_sell = netprofit_sell/total_number_of_trades_sell;
+
+        var avg_trade_percent = netprofit_percent/total_closed_trades;
+        var avg_trade_percent_buy = netprofit_percent_buy/total_number_of_trades_buy;
+        var avg_trade_percent_sell = netprofit_percent_sell/total_number_of_trades_sell;
+
+
+
 
 
         // Avg Winning Trade
@@ -1012,29 +1048,43 @@
         var avg_winning_trade_buy = gross_profit_buy/number_winning_trades_buy;
         var avg_winning_trade_sell = gross_profit_sell/number_winning_trades_sell;
 
+        var avg_winning_trade_percent = gross_profit_percent / number_winning_trades;
+        var avg_winning_trade_percent_buy = gross_profit_percent_buy / number_winning_trades_buy;
+        var avg_winning_trade_percent_sell = gross_profit_percent_sell / number_winning_trades_sell;
+
         
         // Avg Losing Trade
         var avg_losing_trade = gross_loss/number_losing_trades;
         var avg_losing_trade_buy = gross_loss_buy/number_losing_trades_buy;
         var avg_losing_trade_sell = gross_loss_sell/number_losing_trades_sell;
 
+        var avg_losing_trade_percent = gross_loss_percent / number_losing_trades;
+        var avg_losing_trade_percent_buy = gross_loss_percent_buy / number_losing_trades_buy;
+        var avg_losing_trade_percent_sell = gross_loss_percent_sell / number_losing_trades_sell;
 
         // Ratio Avg Win / Avg Loss
         var ratio_avg_win_avg_loss = avg_winning_trade/avg_losing_trade;
         var ratio_avg_win_avg_loss_buy = avg_winning_trade_buy/avg_losing_trade_buy;
         var ratio_avg_win_avg_loss_sell = avg_winning_trade_sell/avg_losing_trade_sell;
 
-
         // Largest Winning Trade
         largest_win = 0; //fix
-        largest_win_buy = (contract_size/100 * largest_win_buy);
-        largest_win_sell = (contract_size/100 * largest_win_sell);
+        largest_win_buy = ((contract_size/100) * largest_win_buy);
+        largest_win_sell = ((contract_size/100) * largest_win_sell);
+
+        largest_win_percent = 0; //fix
+        largest_win_percent_buy = largest_win_buy;
+        largest_win_percent_sell = largest_win_sell;
 
 
         // Largest Losing Trade
         largest_lose = 0; //fix
         largest_lose_buy = (contract_size/100 * largest_lose_buy);
         largest_lose_sell = (contract_size/100 * largest_lose_sell);
+
+        largest_lose_percent = 0; //fix
+        largest_lose_percent_buy = largest_lose_buy;
+        largest_lose_percent_sell = largest_lose_sell;
         
 
         // Avg # Bars in Trades
@@ -1042,7 +1092,6 @@
         var avg_bars_in_trades_buy = 1;
         var avg_bars_in_trades_sell = 1;
         
-
         // Avg # Bars in Winning Trades
         var avg_bars_in_winning = 1;
         var avg_bars_in_winning_buy = 1;
@@ -1060,8 +1109,7 @@
         var margin_calls_buy = 0;
         var margin_calls_sell = 0;
 
-        console.log("ld_netprofit");
-        console.log(ld_netprofit);
+
 
         document.getElementById("databody").innerHTML = str;
 
@@ -1074,15 +1122,40 @@
         document.getElementById("ld_avg_trade").innerHTML = avg_trade.toFixed(2);
 
 
-        document.getElementById("netprofit").innerHTML = netprofit;
-        document.getElementById("gross_profit").innerHTML = gross_profit;
-        document.getElementById("gross_profit_buy").innerHTML = gross_profit_buy;
-        document.getElementById("gross_profit_sell").innerHTML = gross_profit_sell;
-        document.getElementById("gross_loss").innerHTML = gross_loss;
-        document.getElementById("gross_loss_buy").innerHTML = gross_loss_buy;
-        document.getElementById("gross_loss_sell").innerHTML = gross_loss_sell;
+        document.getElementById("netprofit").innerHTML = "$"+(netprofit.toFixed(2)).toString();
+        document.getElementById("netprofit_buy").innerHTML = "$"+(netprofit_buy.toFixed(2)).toString();
+        document.getElementById("netprofit_sell").innerHTML = "$"+(netprofit_sell.toFixed(2)).toString();
+        document.getElementById("netprofit_percent").innerHTML = (netprofit_percent.toFixed(2)).toString() + "%";
+        document.getElementById("netprofit_percent_buy").innerHTML = (netprofit_percent_buy.toFixed(2)).toString() + "%";
+        document.getElementById("netprofit_percent_sell").innerHTML = (netprofit_percent_sell.toFixed(2)).toString() + "%";
+
+
+        document.getElementById("gross_profit").innerHTML = "$"+(gross_profit.toFixed(2)).toString();
+        document.getElementById("gross_profit_buy").innerHTML = "$"+(gross_profit_buy.toFixed(2)).toString();
+        document.getElementById("gross_profit_sell").innerHTML = "$"+(gross_profit_sell.toFixed(2)).toString();
+
+        document.getElementById("gross_profit_percent").innerHTML = (gross_profit_percent.toFixed(2)).toString() + "%";
+        document.getElementById("gross_profit_percent_buy").innerHTML = (gross_profit_percent_buy.toFixed(2)).toString() + "%";
+        document.getElementById("gross_profit_percent_sell").innerHTML = (gross_profit_percent_sell.toFixed(2)).toString() + "%";
+
+
+
+        document.getElementById("gross_loss").innerHTML =  "$"+(gross_loss.toFixed(2)).toString();
+        document.getElementById("gross_loss_buy").innerHTML =  "$"+(gross_loss_buy.toFixed(2)).toString();
+        document.getElementById("gross_loss_sell").innerHTML =  "$"+(gross_loss_sell.toFixed(2)).toString();
+
+        document.getElementById("gross_loss_percent").innerHTML = (gross_loss_percent.toFixed(2)).toString() + "%";
+        document.getElementById("gross_loss_percent_buy").innerHTML = (gross_loss_percent_buy.toFixed(2)).toString() + "%";
+        document.getElementById("gross_loss_percent_sell").innerHTML = (gross_loss_percent_sell.toFixed(2)).toString() + "%";
+
         document.getElementById("max_drawdown_final").innerHTML = max_drawdown_final;
-        document.getElementById("buy_hold_return").innerHTML = buy_hold_return;
+        document.getElementById("max_drawdown_fig").innerHTML = max_drawdown_fig;
+        
+        document.getElementById("buy_hold_return").innerHTML = "$"+(buy_hold_return.toFixed(2)).toString();
+        document.getElementById("percDiff_BHR").innerHTML = (percDiff_BHR.toFixed(2)).toString() + "%";
+        
+
+
         document.getElementById("profit_factor").innerHTML = profit_factor;
         document.getElementById("profit_factor_buy").innerHTML = profit_factor_buy;
         document.getElementById("profit_factor_sell").innerHTML = profit_factor_sell;
@@ -1091,9 +1164,9 @@
         document.getElementById("max_contacts_held_sell").innerHTML = max_contacts_held_sell;
         document.getElementById("open_pl").innerHTML = open_pl;
         document.getElementById("open_pl_percent").innerHTML = open_pl_percent;
-        document.getElementById("commission_paid").innerHTML = commission_paid;
-        document.getElementById("commission_paid_buy").innerHTML = commission_paid_buy;
-        document.getElementById("commission_paid_sell").innerHTML = commission_paid_sell;
+        document.getElementById("commission_paid").innerHTML = "$"+(commission_paid.toFixed(2)).toString();
+        document.getElementById("commission_paid_buy").innerHTML = "$"+(commission_paid_buy.toFixed(2)).toString();
+        document.getElementById("commission_paid_sell").innerHTML = "$"+(commission_paid_sell.toFixed(2)).toString();
         document.getElementById("total_closed_trades").innerHTML = total_closed_trades;
         document.getElementById("total_closed_trades_buy").innerHTML = total_closed_trades_buy;
         document.getElementById("total_closed_trades_sell").innerHTML = total_closed_trades_sell;
@@ -1109,16 +1182,62 @@
         document.getElementById("percent_profitable").innerHTML = percent_profitable;
         document.getElementById("percent_profitable_buy").innerHTML = percent_profitable_buy;
         document.getElementById("percent_profitable_sell").innerHTML = percent_profitable_sell;
-        document.getElementById("avg_trade").innerHTML = avg_trade;
-        document.getElementById("avg_winning_trade").innerHTML = avg_winning_trade;
-        document.getElementById("avg_winning_trade_buy").innerHTML = avg_winning_trade_buy;
-        document.getElementById("avg_winning_trade_sell").innerHTML = avg_winning_trade_sell;
-        document.getElementById("avg_losing_trade").innerHTML = avg_losing_trade;
-        document.getElementById("avg_losing_trade_buy").innerHTML = avg_losing_trade_buy;
-        document.getElementById("avg_losing_trade_sell").innerHTML = avg_losing_trade_sell;
-        document.getElementById("ratio_avg_win_avg_loss").innerHTML = ratio_avg_win_avg_loss;
-        document.getElementById("ratio_avg_win_avg_loss").innerHTML = ratio_avg_win_avg_loss;
-        document.getElementById("ratio_avg_win_avg_loss").innerHTML = ratio_avg_win_avg_loss;
+
+        document.getElementById("avg_trade").innerHTML = "$" + (avg_trade.toFixed(2)).toString();
+        document.getElementById("avg_trade_buy").innerHTML = "$" + (avg_trade_buy.toFixed(2)).toString();
+        document.getElementById("avg_trade_sell").innerHTML = "$" + (avg_trade_sell.toFixed(2)).toString();
+        document.getElementById("avg_trade_percent").innerHTML = (avg_trade_percent.toFixed(2)).toString() + "%";
+        document.getElementById("avg_trade_percent_buy").innerHTML = (avg_trade_percent_buy.toFixed(2)).toString() + "%";
+        document.getElementById("avg_trade_percent_sell").innerHTML = (avg_trade_percent_sell.toFixed(2)).toString() + "%";
+        
+
+        document.getElementById("avg_winning_trade").innerHTML = "$" + (avg_winning_trade.toFixed(2)).toString();
+        document.getElementById("avg_winning_trade_buy").innerHTML = "$" + (avg_winning_trade_buy.toFixed(2)).toString();
+        document.getElementById("avg_winning_trade_sell").innerHTML = "$" + (avg_winning_trade_sell.toFixed(2)).toString();
+
+        document.getElementById("avg_winning_trade_percent").innerHTML = (avg_winning_trade_percent.toFixed(2)).toString() + "%";
+        document.getElementById("avg_winning_trade_percent_buy").innerHTML = (avg_winning_trade_percent_buy.toFixed(2)).toString() + "%";
+        document.getElementById("avg_winning_trade_percent_sell").innerHTML = (avg_winning_trade_percent_sell.toFixed(2)).toString() + "%";
+
+
+        // ((!isNaN(avg_losing_trade)) ? 'minor' : 'major');
+        if(!isNaN(avg_losing_trade)){
+
+            document.getElementById("avg_losing_trade").innerHTML =  "$" + (avg_losing_trade.toFixed(2)).toString();
+            document.getElementById("avg_losing_trade_buy").innerHTML =  "$" + (avg_losing_trade_buy.toFixed(2)).toString();
+            document.getElementById("avg_losing_trade_sell").innerHTML =  "$" + (avg_losing_trade_sell.toFixed(2)).toString();
+        }
+        
+        if(!isNaN(avg_losing_trade_percent)){
+            document.getElementById("avg_losing_trade_percent").innerHTML = (avg_losing_trade_percent.toFixed(2)).toString() + "%";
+            document.getElementById("avg_losing_trade_percent_buy").innerHTML = (avg_losing_trade_percent_buy.toFixed(2)).toString() + "%";
+            document.getElementById("avg_losing_trade_percent_sell").innerHTML = (avg_losing_trade_percent_sell.toFixed(2)).toString() + "%";
+        }
+
+        document.getElementById("ratio_avg_win_avg_loss").innerHTML = (ratio_avg_win_avg_loss.toFixed(2)).toString();
+        document.getElementById("ratio_avg_win_avg_loss_buy").innerHTML = (ratio_avg_win_avg_loss_buy.toFixed(2)).toString();
+        document.getElementById("ratio_avg_win_avg_loss_sell").innerHTML = (ratio_avg_win_avg_loss_sell.toFixed(2)).toString();
+
+        document.getElementById("largest_win").innerHTML = "$" + (largest_win.toFixed(2)).toString();
+        document.getElementById("largest_win_buy").innerHTML = "$" + (largest_win_buy.toFixed(2)).toString();
+        document.getElementById("largest_win_sell").innerHTML = "$" + (largest_win_sell.toFixed(2)).toString();
+        
+        document.getElementById("largest_win_percent").innerHTML = (largest_win_percent.toFixed(2)).toString() + "%";
+        document.getElementById("largest_win_percent_buy").innerHTML = (largest_win_percent_buy.toFixed(2)).toString() + "%";        
+        document.getElementById("largest_win_percent_sell").innerHTML = (largest_win_percent_sell.toFixed(2)).toString() + "%";
+
+        if(!isNaN(largest_lose)){
+            document.getElementById("largest_lose").innerHTML =  "$" + (largest_lose.toFixed(2)).toString();
+            document.getElementById("largest_lose_buy").innerHTML =  "$" + (largest_lose_buy.toFixed(2)).toString();
+            document.getElementById("largest_lose_sell").innerHTML =  "$" + (largest_lose_sell.toFixed(2)).toString();
+        }
+
+        if(!isNaN(largest_lose_percent)){
+            document.getElementById("largest_lose_percent").innerHTML = (largest_lose_percent).toString() + "%";
+            document.getElementById("largest_lose_percent_buy").innerHTML = (largest_lose_percent_buy).toString() + "%";        
+            document.getElementById("largest_lose_percent_sell").innerHTML = (largest_lose_percent_sell).toString() + "%";
+        }
+
         document.getElementById("avg_bars_in_trades").innerHTML = avg_bars_in_trades;
         document.getElementById("avg_bars_in_trades_buy").innerHTML = avg_bars_in_trades_buy;
         document.getElementById("avg_bars_in_trades_sell").innerHTML = avg_bars_in_trades_sell;
@@ -1128,6 +1247,7 @@
         document.getElementById("avg_bars_in_losing").innerHTML = avg_bars_in_losing;
         document.getElementById("avg_bars_in_losing_buy").innerHTML = avg_bars_in_losing_buy;
         document.getElementById("avg_bars_in_losing_sell").innerHTML = avg_bars_in_losing_sell;
+
         document.getElementById("margin_calls").innerHTML = margin_calls;
         document.getElementById("margin_calls_buy").innerHTML = margin_calls_buy;
         document.getElementById("margin_calls_sell").innerHTML = margin_calls_sell;
