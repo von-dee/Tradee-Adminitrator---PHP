@@ -38,7 +38,13 @@
         wickUpColor: 'rgba(255, 144, 0, 1)',
     });
 
-    var ekeys = "<?php (!empty($ekeys) ? $ekeys : "1m"); echo $ekeys; ?>";
+    <?php
+    
+        $tf = (!isset($ekeys) || $ekeys == "") ? '1m' : $ekeys;
+        
+    ?>
+
+    var ekeys = "<?php echo $tf; ?>";
 
     fetch('./public/strategies/controllers/kline.php?timeframe='+ekeys)
         .then((r) => r.json())
