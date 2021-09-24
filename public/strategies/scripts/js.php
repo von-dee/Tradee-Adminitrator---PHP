@@ -38,8 +38,9 @@
         wickUpColor: 'rgba(255, 144, 0, 1)',
     });
 
+    var ekeys = "<?php (!empty($ekeys) ? $ekeys : "1m"); echo $ekeys; ?>";
 
-    fetch('http://localhost/tradee/public/strategies/controllers/kline.php')
+    fetch('./public/strategies/controllers/kline.php?timeframe='+ekeys)
         .then((r) => r.json())
         .then((response) => {
             console.log("KLINE response")
@@ -49,7 +50,8 @@
         })
 
 
-    var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
+
+    var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_"+ekeys);
 
     binanceSocket.onmessage = function (event) {	
     var message = JSON.parse(event.data);

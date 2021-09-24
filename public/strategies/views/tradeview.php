@@ -1,7 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-
 <style>
 
     .row_margin{
@@ -67,7 +66,49 @@
             <div class="col-xxl-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Chart </h4>
+                        
+                        <div class="col-10">
+                            <h4 class="card-title">Chart </h4>
+                        </div>
+
+                        <div class="col-2c">
+                            <select class="form-select" id="tfselect" name="tfselect" onchange="jsfunction()">
+                                <!-- //Periods: 1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M
+                                m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
+                                1m 3m 5m 15m 30m 1h 2h 4h 6h 8h 12h 1d 3d 1w 1M -->
+
+                                <option <?php if(($ekeys == "1m") || empty($ekeys)){ echo "selected"; } ?> value="1m">1 Minute</option>
+                                <option <?php if($ekeys == "3m"){ echo "selected"; } ?> value="3m">3 Minutes</option>
+                                <option <?php if($ekeys == "5m"){ echo "selected"; } ?> value="5m">5 Minutes</option>
+                                <option <?php if($ekeys == "15m"){ echo "selected"; } ?> value="15m">15 Minutes</option>
+                                <option <?php if($ekeys == "30m"){ echo "selected"; } ?> value="30m">30 Minutes</option>
+                                <option <?php if($ekeys == "1h"){ echo "selected"; } ?> value="1h">1 Hour</option>
+                                <option <?php if($ekeys == "2h"){ echo "selected"; } ?> value="2h">2 Hour</option>
+                                <option <?php if($ekeys == "4h"){ echo "selected"; } ?> value="4h">4 Hour</option>
+                                <option <?php if($ekeys == "6h"){ echo "selected"; } ?> value="6h">6 Hour</option>
+                                <option <?php if($ekeys == "8h"){ echo "selected"; } ?> value="8h">8 Hour</option>
+                                <option <?php if($ekeys == "12h"){ echo "selected"; } ?> value="12h">12 Hour</option>
+                                <option <?php if($ekeys == "1d"){ echo "selected"; } ?> value="1d">1 Day</option>
+                                <option <?php if($ekeys == "3d"){ echo "selected"; } ?> value="3d">3 Day</option>
+                                <option <?php if($ekeys == "1w"){ echo "selected"; } ?> value="1w">1 Week</option>
+                                <option <?php if($ekeys == "1M"){ echo "selected"; } ?> value="1M">1 Month</option>
+
+                            </select>
+                        </div>
+
+                        <script>
+                            function jsfunction(){
+                                var tfselect = document.getElementById("tfselect").value;                               
+                                
+                                document.getElementById("ekeys").value = tfselect;
+                                document.getElementById("keys").value = "<?php echo $keys ?>";
+                                document.getElementById("view").value = 'tradeview';
+                                document.getElementById("viewpage").value = 'trades';
+                                document.myform.submit();
+
+                            }
+                        </script>
+
                     </div>
                     <div class="card-body">
                         <div class="col-12">
@@ -144,7 +185,7 @@
                                                 labels:[],
                                                 datasets: [
                                                 {
-                                                    label: "Trade Graph",
+                                                    label: "Equity",
                                                     fill: false,
                                                     borderColor: "#009EFF",
                                                     // borderDash: [5, 5],
@@ -157,7 +198,7 @@
                                                     dat:[]
                                                 },
                                                 {
-                                                    label: "Trade Graph",
+                                                    label: "Drawdown",
                                                     fill: false,
                                                     borderColor: "#FF4200",
                                                     // borderDash: [5, 5],
@@ -500,7 +541,7 @@
                                         <b>Avg Losing Trade</b><br>
                                     </div>
                                     <div class="col-2">
-                                        <span id="avg_losing_trade ="></span>$ 0<br>
+                                        <span id="avg_losing_trade"></span>$ 0<br>
                                         <span id="avg_losing_trade_percent" class="small">0 %</span><br>
                                     </div>
                                     <div class="col-2">
@@ -788,9 +829,14 @@
         //   newElement.textContent = "message: " + e.data;
         //   eventList.appendChild(newElement); 
 
-        var equity_figure_arr=[];var mark_down_arr=[];
+        var useCommission = false;
         
-        var initial_deposit = 200;
+        var equity_figure_arr=[];
+        var mark_down_arr=[];
+        
+
+        var initial_deposit = parseFloat(val[val.length-1].TRD_EQUITY);
+
         var total_profit_percent = 0;
         var total_number_of_trades = val.length;
         var contract_size = 50;
@@ -798,8 +844,8 @@
         var total_profit_percent_loses = 0;
         var max_drawdown = 0;
         
-        var first_trade_close = parseFloat(val[0].TRD_PRICE);
-        var last_trade_close = parseFloat(val[val.length-1].TRD_PRICE);
+        var first_trade_close = parseFloat(val[val.length-1].TRD_PRICE);
+        var last_trade_close = parseFloat(val[0].TRD_PRICE);
 
 
         var percDiff_BHR =  100 * (first_trade_close - last_trade_close) / ( (first_trade_close+last_trade_close)/2 );
@@ -810,6 +856,7 @@
         var percent_wins_buy = 0;
         var percent_loses_sell = 0;
 
+        var total_num_trades = 0;
         var total_number_of_trades_buy = 0;
         var total_number_of_trades_sell = 0;
 
@@ -841,6 +888,28 @@
         var total_profit_percent_sell = 0;
 
         var arr_times = [];
+        var arr_times_graph=[];
+
+
+        var netprofit  = 0;
+        var netprofit_buy = 0;
+        var netprofit_sell = 0;
+        var netprofit_percent = 0;
+        var netprofit_percent_buy = 0;
+        var netprofit_percent_sell = 0;
+        var gross_both = 0;
+        var gross_profit = 0;
+        var gross_profit_buy = 0;
+        var gross_profit_sell = 0;
+        var gross_profit_percent = 0.000;
+        var gross_profit_percent_buy = 0.000;
+        var gross_profit_percent_sell = 0.000;
+        var gross_loss = 0;
+        var gross_loss_buy = 0;
+        var gross_loss_sell = 0;
+        var gross_loss_percent = 0;
+        var gross_loss_percent_buy = 0;
+        var gross_loss_percent_sell = 0;
 
         for (const i in val) {
             if (Object.hasOwnProperty.call(val, i)) {
@@ -851,17 +920,53 @@
                 // console.log(element);
 
 
+                mark_down_arr.push(element.TRD_DRAWDOWN);
+                equity_figure_arr.push(element.TRD_EQUITY);
+
 
 
                 total_profit_percent = total_profit_percent + parseFloat(element.TRD_PROFIT);
                 
-                element_TRD_PROFIT = (parseFloat(element.TRD_CONTRACTS)/100) * parseFloat(element.TRD_PROFIT);
-                total_profit_percent = total_profit_percent + element_TRD_PROFIT;
+                // element_TRD_PROFIT = (parseFloat(element.TRD_CONTRACTS)/100) * parseFloat(element.TRD_PROFIT);
+                // total_profit_percent = total_profit_percent + element_TRD_PROFIT;
                 
+
+                
+                // Basic Calculations
+                
+                var element_TRD_PRICE = parseFloat(element.TRD_PRICE);
+                var element_TRD_CUMPROFIT = parseFloat(element.TRD_CUMPROFIT);
+                var element_TRD_RUNUP = parseFloat(element.TRD_RUNUP);
+                var element_TRD_DRAWDOWN = parseFloat(element.TRD_DRAWDOWN);
+                var element_TRD_PROFIT = parseFloat(element.TRD_PROFIT) - ((useCommission == true) ? 0.1 : 0);
+                var element_TRD_PROFIT_GROSS = parseFloat(element.TRD_PROFIT);
+                var element_TRD_CONTRACTS = parseFloat(element.TRD_CONTRACTS);
+
+                var commission = (2*((element_TRD_CONTRACTS/100) * 0.1));
+
+                var profit_value = ((element_TRD_CONTRACTS/100) * element_TRD_PROFIT);
+                var profit_value_gross = ((element_TRD_CONTRACTS/100) * element_TRD_PROFIT_GROSS);
+                var drawdown_value = (element_TRD_CONTRACTS/100) * element_TRD_DRAWDOWN;
+                var roundup_value = (element_TRD_CONTRACTS/100) * element_TRD_RUNUP;
+                var cumlative_percent = (element_TRD_CUMPROFIT/200)* 100;
+                
+                
+
+                // Net
                 if(element_TRD_PROFIT>0){
                     percent_wins = element_TRD_PROFIT;
                 }else if(element_TRD_PROFIT<0){
                     percent_loses = element_TRD_PROFIT;
+                }
+
+
+                // Gross
+                if(element_TRD_PROFIT_GROSS > 0){
+                    gross_profit += profit_value_gross;
+                    gross_profit_percent += element_TRD_PROFIT_GROSS; 
+                }else if(element_TRD_PROFIT_GROSS < 0){
+                    gross_loss += profit_value_gross;
+                    gross_loss_percent += element_TRD_PROFIT_GROSS; 
                 }
 
                 total_profit_percent_wins  = total_profit_percent_wins + percent_wins;
@@ -872,13 +977,30 @@
                     max_drawdown = parseFloat(element.TRD_DRAWDOWN);
                 }
 
-                mark_down_arr.push(element.TRD_DRAWDOWN);
+
+                
+                netprofit += profit_value;
+                netprofit_percent += element_TRD_PROFIT; 
 
                 // Plot View
                 if(element.TRD_ENTRY_SIGNAL == "Buy"){
                     entrysignal = '<span class="success-arrow"><i class="icofont-arrow-up"></i></span>'+element.TRD_ENTRY_SIGNAL;
                     
+                      
+                    netprofit_buy  += profit_value;
+                    netprofit_percent_buy  += element_TRD_PROFIT; 
+
+                    // Gross
+                    if(element_TRD_PROFIT_GROSS > 0){
+                        gross_profit_buy += profit_value_gross;
+                        gross_profit_percent_buy += element_TRD_PROFIT_GROSS; 
+                    }else if(element_TRD_PROFIT_GROSS < 0){
+                        gross_loss_buy += profit_value_gross;
+                        gross_loss_percent_buy += element_TRD_PROFIT_GROSS; 
+                    }
+
                     if(element_TRD_PROFIT>0){
+
                         percent_wins_buy = element_TRD_PROFIT;
                         winning_trades_buy = winning_trades_buy + 1;
                         
@@ -889,6 +1011,7 @@
                         total_profit_percent_buy = total_profit_percent_buy + element_TRD_PROFIT;              
 
                     }else if(element_TRD_PROFIT<0){
+
                         percent_loses_buy = element_TRD_PROFIT;
                         losing_trades_buy = winning_trades_buy + 1;
 
@@ -906,8 +1029,22 @@
                     total_number_of_trades_buy = total_number_of_trades_buy + 1;
 
                 }else if(element.TRD_ENTRY_SIGNAL == "Sell"){
+                    
                     entrysignal = '<span class="danger-arrow"><i class="icofont-arrow-down"></i></span>'+element.TRD_ENTRY_SIGNAL;
 
+                    // Gross
+                    if(element_TRD_PROFIT_GROSS > 0){
+                        gross_profit_sell += profit_value_gross;
+                        gross_profit_percent_sell += element_TRD_PROFIT_GROSS; 
+                    }else if(element_TRD_PROFIT_GROSS < 0){
+                        gross_loss_sell += profit_value_gross;
+                        gross_loss_percent_sell += element_TRD_PROFIT_GROSS; 
+                    }
+
+
+                    netprofit_sell  += profit_value;
+                    netprofit_percent_sell  += element_TRD_PROFIT; 
+                    
                     if(element_TRD_PROFIT>0){
                         percent_wins_sell = element_TRD_PROFIT;
                         winning_trades_sell = winning_trades_sell + 1;
@@ -940,13 +1077,8 @@
 
                 // str+='<tr><td>'+ i +'</td></tr>'
 
-
+                total_num_trades = total_num_trades + 1;
                 
-                element_TRD_PRICE = (parseFloat(element.TRD_PRICE)).toFixed(2);
-                element_TRD_CUMPROFIT = (parseFloat(element.TRD_CUMPROFIT)).toFixed(2);
-                element_TRD_RUNUP = (parseFloat(element.TRD_RUNUP)).toFixed(2);
-                element_TRD_DRAWDOWN = (parseFloat(element.TRD_DRAWDOWN)).toFixed(2);
-                element_TRD_PROFIT = (parseFloat(element.TRD_PROFIT)).toFixed(2);
 
                 str+='<tr><td data-th="Wallet"><span class="bt-content">'+ x +'</span></td><td class="coin-name" data-th="Coin Name">'+
                 '<span class="bt-content"><i class="cc BTC"></i> <br> Bitcoin - BTCUSDT</span></td><td data-th="Wallet">'+entrysignal+
@@ -954,12 +1086,14 @@
                 '</span><br>Exit <span class="bt-content">'+element.TRD_EXIT_TYPE+
                 '</span></td><td data-th="Amount"><span class="bt-content">'+element.TRD_ENTRY_DATETIME+'</span><br><span class="bt-content">'+element.TRD_EXIT_DATETIME+'</span></td><td data-th="trd_exittrigger"><span class="bt-content">'+element.TRD_EXITTRIGGER+
                 '</span></td><td data-th="trd_price"><span class="bt-content">'+element_TRD_PRICE+
-                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">'+element_TRD_PROFIT+'</span></td><td data-th="trd_cumprofit"><span class="bt-content">'+element_TRD_CUMPROFIT+'</span></td><td data-th="trd_runup"><span class="bt-content">'+element_TRD_RUNUP+'</span></td><td data-th="trd_drawdown"><span class="bt-content">'+element_TRD_DRAWDOWN+'</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
+                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">$'+profit_value.toFixed(2)+' <br> '+element_TRD_PROFIT.toFixed(2)+'%</span></td><td data-th="trd_cumprofit"><span class="bt-content">$'+element_TRD_CUMPROFIT.toFixed(3)+'<br>'+cumlative_percent.toFixed(3)+'%</span></td><td data-th="trd_runup"><span class="bt-content">$'+roundup_value.toFixed(2)+' <br>'+element_TRD_RUNUP.toFixed(2)+'%</span></td><td data-th="trd_drawdown"><span class="bt-content">$'+drawdown_value.toFixed(2)+' <br> '+element_TRD_DRAWDOWN.toFixed(2)+'%</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
                 // console.log(str);
+
+                
 
                 // console.log("element.TRD_ENTRY_DATETIME");
                 var datefm = element.TRD_ENTRY_DATETIME;
-                
+                arr_times_graph.push(element.TRD_ENTRY_DATETIME);
                 
 
                 for (var ii = 0; ii < timeData.length; ii++) {
@@ -967,7 +1101,7 @@
                     if ((timeData[ii].time === toTimestamp(datefm.substring(0,16)+":00")) && arr_times.includes(unixToNormalDate(timeData[ii].time)) == false) {
                         // if(markers.some(item => item.time !== timeData[ii].time) ){
 
-                        arr_times.push(unixToNormalDate(timeData[ii].time));
+                            
 
                         if(element.TRD_ENTRY_SIGNAL ==='Sell'){
                             if (markers.includes({ time: timeData[ii].time, position: 'aboveBar', color: '#e91e63', shape: 'arrowDown', text: 'Sell' }) === false){
@@ -983,7 +1117,7 @@
                             }
                           
                         }
-                        equity_figure_arr.push(element.TRD_EQUITY);
+                        
 
                     // } 
                     } 
@@ -991,9 +1125,18 @@
               
                 candleSeries.setMarkers(markers);
                 // arr_times = arr_times.length ? arr_times : getColumn(timeData,"time");
-                console.log('arrtimes',arr_times);
-                drawLineChart(ctx,equity_figure_arr,mark_down_arr,arr_times);
+                // console.log('arrtimes',arr_times_graph);
+
+                
             }
+
+
+                equity_figure_arr_rev = equity_figure_arr.reverse();
+                mark_down_arr_rev = mark_down_arr.reverse();
+                arr_times_graph_rev = arr_times_graph.reverse();
+
+                drawLineChart(ctx, equity_figure_arr_rev, mark_down_arr_rev, arr_times_graph_rev.reverse());
+
            
           
                
@@ -1001,39 +1144,40 @@
            
         }  
 
+        
+        
+
         // Net Profit
-        var netprofit = ((initial_deposit/100) * total_profit_percent) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
-        var netprofit_buy =  ((initial_deposit/100) * total_profit_percent_buy) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
-        var netprofit_sell = ((initial_deposit/100) * total_profit_percent_sell) - (total_number_of_trades * (2*((contract_size/100) * 0.1)));
+        // var netprofit = ((initial_deposit/100) * total_profit_percent) - ((useCommission == true) ? commission : 0);
+        // var netprofit_buy =  ((initial_deposit/100) * total_profit_percent_buy) - ((useCommission == true) ? commission : 0);
+        // var netprofit_sell = ((initial_deposit/100) * total_profit_percent_sell) - ((useCommission == true) ? commission : 0);
 
-        var netprofit_percent = (netprofit/initial_deposit)*100;
-        var netprofit_percent_buy = (netprofit_buy/initial_deposit)*100;
-        var netprofit_percent_sell = (netprofit_sell/initial_deposit)*100;
+        // var netprofit_percent = (netprofit/initial_deposit)*100;
+        // var netprofit_percent_buy = (netprofit_buy/initial_deposit)*100;
+        // var netprofit_percent_sell = (netprofit_sell/initial_deposit)*100;
 
-        
-        
         
 
         // Gross Profit	
-        var gross_profit = (initial_deposit/100) * total_profit_percent_wins;
-        var gross_profit_buy = (initial_deposit/100) * total_buy_profit_percent_wins;
-        var gross_profit_sell = (initial_deposit/100) * total_sell_profit_percent_wins;
+        // var gross_profit = (initial_deposit/100) * total_profit_percent_wins;
+        // var gross_profit_buy = (initial_deposit/100) * total_buy_profit_percent_wins;
+        // var gross_profit_sell = (initial_deposit/100) * total_sell_profit_percent_wins;
         
-        var gross_profit_percent = total_profit_percent_wins;
-        var gross_profit_percent_buy = total_buy_profit_percent_wins;
-        var gross_profit_percent_sell = total_sell_profit_percent_wins;
+        // var gross_profit_percent = total_profit_percent_wins;
+        // var gross_profit_percent_buy = total_buy_profit_percent_wins;
+        // var gross_profit_percent_sell = total_sell_profit_percent_wins;
 
 
 
         // Gross Loss
-        var gross_loss = (initial_deposit/100) * total_profit_percent_loses;
-        var gross_loss_buy = (initial_deposit/100) * total_buy_profit_percent_loses;
-        var gross_loss_sell = (initial_deposit/100) * total_sell_profit_percent_loses;
+        // var gross_loss = (initial_deposit/100) * total_profit_percent_loses;
+        // var gross_loss_buy = (initial_deposit/100) * total_buy_profit_percent_loses;
+        // var gross_loss_sell = (initial_deposit/100) * total_sell_profit_percent_loses;
 
 
-        var gross_loss_percent = total_profit_percent_loses;
-        var gross_loss_percent_buy = total_buy_profit_percent_loses;
-        var gross_loss_percent_sell = total_sell_profit_percent_loses;
+        // var gross_loss_percent = total_profit_percent_loses;
+        // var gross_loss_percent_buy = total_buy_profit_percent_loses;
+        // var gross_loss_percent_sell = total_sell_profit_percent_loses;
 
 
 
@@ -1213,17 +1357,19 @@
         document.getElementById("gross_loss_percent_buy").innerHTML = (gross_loss_percent_buy.toFixed(2)).toString() + "%";
         document.getElementById("gross_loss_percent_sell").innerHTML = (gross_loss_percent_sell.toFixed(2)).toString() + "%";
 
-        document.getElementById("max_drawdown_final").innerHTML = max_drawdown_final;
-        document.getElementById("max_drawdown_fig").innerHTML = max_drawdown_fig;
+        document.getElementById("max_drawdown_final").innerHTML = (max_drawdown_final.toFixed(2)).toString() + "%";
+        document.getElementById("max_drawdown_fig").innerHTML = "$"+(max_drawdown_fig.toFixed(2)).toString();
         
         document.getElementById("buy_hold_return").innerHTML = "$"+(buy_hold_return.toFixed(2)).toString();
         document.getElementById("percDiff_BHR").innerHTML = (percDiff_BHR.toFixed(2)).toString() + "%";
         
 
 
-        document.getElementById("profit_factor").innerHTML = profit_factor;
-        document.getElementById("profit_factor_buy").innerHTML = profit_factor_buy;
-        document.getElementById("profit_factor_sell").innerHTML = profit_factor_sell;
+        document.getElementById("profit_factor").innerHTML = profit_factor.toFixed(2);
+        document.getElementById("profit_factor_buy").innerHTML = profit_factor_buy.toFixed(2);
+        document.getElementById("profit_factor_sell").innerHTML = profit_factor_sell.toFixed(2);
+
+        
         document.getElementById("max_contacts_held").innerHTML = max_contacts_held;
         document.getElementById("max_contacts_held_buy").innerHTML = max_contacts_held_buy;
         document.getElementById("max_contacts_held_sell").innerHTML = max_contacts_held_sell;
@@ -1244,9 +1390,10 @@
         document.getElementById("number_losing_trades").innerHTML = number_losing_trades;
         document.getElementById("number_losing_trades_buy").innerHTML = number_losing_trades_buy;
         document.getElementById("number_losing_trades_sell").innerHTML = number_losing_trades_sell;
-        document.getElementById("percent_profitable").innerHTML = percent_profitable;
-        document.getElementById("percent_profitable_buy").innerHTML = percent_profitable_buy;
-        document.getElementById("percent_profitable_sell").innerHTML = percent_profitable_sell;
+
+        document.getElementById("percent_profitable").innerHTML = percent_profitable.toFixed(2);
+        document.getElementById("percent_profitable_buy").innerHTML = percent_profitable_buy.toFixed(2);
+        document.getElementById("percent_profitable_sell").innerHTML = percent_profitable_sell.toFixed(2);
 
         document.getElementById("avg_trade").innerHTML = "$" + (avg_trade.toFixed(2)).toString();
         document.getElementById("avg_trade_buy").innerHTML = "$" + (avg_trade_buy.toFixed(2)).toString();
@@ -1265,18 +1412,25 @@
         document.getElementById("avg_winning_trade_percent_sell").innerHTML = (avg_winning_trade_percent_sell.toFixed(2)).toString() + "%";
 
 
-        // ((!isNaN(avg_losing_trade)) ? 'minor' : 'major');
-        if(!isNaN(avg_losing_trade)){
+        
+        
+        
 
-            document.getElementById("avg_losing_trade").innerHTML =  "$" + (avg_losing_trade.toFixed(2)).toString();
-            document.getElementById("avg_losing_trade_buy").innerHTML =  "$" + (avg_losing_trade_buy.toFixed(2)).toString();
-            document.getElementById("avg_losing_trade_sell").innerHTML =  "$" + (avg_losing_trade_sell.toFixed(2)).toString();
+        //  ((!isNaN(avg_losing_trade)) ? avg_losing_trade : '0')
+        //  ((!isNaN(avg_losing_trade_buy)) ? avg_losing_trade_buy : '0')
+        //  ((!isNaN(avg_losing_trade_sell)) ? avg_losing_trade_sell : '0')
+
+
+        if(!isNaN(avg_losing_trade)){
+            document.getElementById("avg_losing_trade").innerHTML =  "$" + (((!isNaN(avg_losing_trade)) ? avg_losing_trade : 0.000).toFixed(2)).toString();
+            document.getElementById("avg_losing_trade_buy").innerHTML =  "$" + (((!isNaN(avg_losing_trade_buy)) ? avg_losing_trade_buy : 0.000).toFixed(2)).toString();
+            document.getElementById("avg_losing_trade_sell").innerHTML =  "$" + (((!isNaN(avg_losing_trade_sell)) ? avg_losing_trade_sell : 0.000).toFixed(2)).toString();
         }
         
         if(!isNaN(avg_losing_trade_percent)){
-            document.getElementById("avg_losing_trade_percent").innerHTML = (avg_losing_trade_percent.toFixed(2)).toString() + "%";
-            document.getElementById("avg_losing_trade_percent_buy").innerHTML = (avg_losing_trade_percent_buy.toFixed(2)).toString() + "%";
-            document.getElementById("avg_losing_trade_percent_sell").innerHTML = (avg_losing_trade_percent_sell.toFixed(2)).toString() + "%";
+            document.getElementById("avg_losing_trade_percent").innerHTML = ( ((!isNaN(avg_losing_trade_percent)) ? avg_losing_trade_percent : 0.000).toFixed(2)).toString() + "%";
+            document.getElementById("avg_losing_trade_percent_buy").innerHTML = ( ((!isNaN(avg_losing_trade_percent_buy)) ? avg_losing_trade_percent_buy : 0.000).toFixed(2)).toString() + "%";
+            document.getElementById("avg_losing_trade_percent_sell").innerHTML = ( ((!isNaN(avg_losing_trade_percent_sell)) ? avg_losing_trade_percent_sell : 0.000).toFixed(2)).toString() + "%";
         }
 
         document.getElementById("ratio_avg_win_avg_loss").innerHTML = (ratio_avg_win_avg_loss.toFixed(2)).toString();
@@ -1298,9 +1452,9 @@
         }
 
         if(!isNaN(largest_lose_percent)){
-            document.getElementById("largest_lose_percent").innerHTML = (largest_lose_percent).toString() + "%";
-            document.getElementById("largest_lose_percent_buy").innerHTML = (largest_lose_percent_buy).toString() + "%";        
-            document.getElementById("largest_lose_percent_sell").innerHTML = (largest_lose_percent_sell).toString() + "%";
+            document.getElementById("largest_lose_percent").innerHTML = (largest_lose_percent.toFixed(2)).toString() + "%";
+            document.getElementById("largest_lose_percent_buy").innerHTML = (largest_lose_percent_buy.toFixed(2)).toString() + "%";        
+            document.getElementById("largest_lose_percent_sell").innerHTML = (largest_lose_percent_sell.toFixed(2)).toString() + "%";
         }
 
         document.getElementById("avg_bars_in_trades").innerHTML = avg_bars_in_trades;
@@ -1357,22 +1511,24 @@
         return formattedTime;
 
     }
+
     function drawLineChart(ctx,equity_figure_arr,mark_down_arr,time){
-        if(lineChart instanceof Chart)
-{ 
-    lineChart.data.labels=time
-    lineChart.data.datasets[0].data=equity_figure_arr;
-    lineChart.data.datasets[1].data=mark_down_arr;
-    lineChart.update();
-}else{
-                                     
+        
+        if(lineChart instanceof Chart){ 
+            lineChart.data.labels=time
+            lineChart.data.datasets[0].data=equity_figure_arr;
+            lineChart.data.datasets[1].data=mark_down_arr;
+            lineChart.update();
+        }else{
+                                            
+        }
+
     }
-  
-    }
+
     function getColumn(anArray, columnName) {
-    return anArray.map(function(row) {
-        // return unixToNormalDate(row[columnName]);
-        return row[columnName];
-    });
-}
+        return anArray.map(function(row) {
+            // return unixToNormalDate(row[columnName]);
+            return row[columnName];
+        });
+    }
 </script>

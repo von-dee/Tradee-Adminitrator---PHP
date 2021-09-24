@@ -6,7 +6,9 @@
     $api_secret = "SkMIpu4jK8aqcoADBTyLCIWkk4qLI2sUZyE4ge3jGsumh22llWEWo3R9Uv4L4Wx0";
     $api = new Binance\API($api_key, $api_secret);
 
-    $ticks = $api->candlesticks("BTCUSDT", "1m");
+    $timeframe = $_GET["timeframe"];
+
+    $ticks = $api->candlesticks("BTCUSDT", $timeframe);
     
     $processed_candlesticks = [];
 
@@ -19,19 +21,20 @@
             "low"=> $data["low"], 
             "close"=> $data["close"]
         ];
-//         'open' => string '47931.98000000' (length=14)
-//   'high' => string '47983.29000000' (length=14)
-//   'low' => string '47931.98000000' (length=14)
-//   'close' => string '47976.55000000' (length=14)
-//   'volume' => string '1270840.18652500' (length=16)
-//   'openTime' => int 1631786520000
-//   'closeTime' => int 1631786579999
-//   'assetVolume' => string '26.49562000' (length=11)
-//   'baseVolume' => string '1270840.18652500' (length=16)
-//   'trades' => int 770
-//   'assetBuyVolume' => string '17.25147000' (length=11)
-//   'takerBuyVolume' => string '827488.03312200' (length=15)
-//   'ignored' => string '0' (length=1)
+        
+        //   'open' => string '47931.98000000' (length=14)
+        //   'high' => string '47983.29000000' (length=14)
+        //   'low' => string '47931.98000000' (length=14)
+        //   'close' => string '47976.55000000' (length=14)
+        //   'volume' => string '1270840.18652500' (length=16)
+        //   'openTime' => int 1631786520000
+        //   'closeTime' => int 1631786579999
+        //   'assetVolume' => string '26.49562000' (length=11)
+        //   'baseVolume' => string '1270840.18652500' (length=16)
+        //   'trades' => int 770
+        //   'assetBuyVolume' => string '17.25147000' (length=11)
+        //   'takerBuyVolume' => string '827488.03312200' (length=15)
+        //   'ignored' => string '0' (length=1)
 
     }
         
