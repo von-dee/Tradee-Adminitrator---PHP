@@ -10,15 +10,18 @@
                     <span><i class="icofont-ui-home"></i></span>
                 </a>
             </li>
-            <li><a href="<?php echo $nav->navigate('strategies','');?>" data-toggle="tooltip" data-placement="right" title="Trade">
+            <li>
+                <a href="<?php echo $nav->navigate('strategies','');?>" data-toggle="tooltip" data-placement="right" title="Trade">
                     <span><i class="icofont-exchange"></i></span>
                 </a>
             </li>
-            <li><a href="<?php echo $nav->navigate('wallet','');?>" data-toggle="tooltip" data-placement="right" title="Wallet">
+            <li>
+                <a href="<?php echo $nav->navigate('wallet','');?>" data-toggle="tooltip" data-placement="right" title="Wallet">
                     <span><i class="icofont-wallet"></i></span>
                 </a>
             </li>
-            <li><a href="<?php echo $nav->navigate('settings','');?>" data-toggle="tooltip" data-placement="right" title="Settings">
+            <li>
+                <a href="<?php echo $nav->navigate('settings','');?>" data-toggle="tooltip" data-placement="right" title="Settings">
                     <span><i class="icofont-settings"></i></span>
                 </a>
             </li>

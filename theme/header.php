@@ -13,10 +13,27 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon.png">
     <!-- Custom Stylesheet -->
 
-
+    <link rel="stylesheet" href="media/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="media/css/style.css">
+
+    
     <script src="media/vendor/jquery/jquery.min.js"></script>
     <script src="public/root.script.js"></script>
+
+    <style>
+
+        #main-wrapper {
+            opacity: 0;
+            -webkit-transition: all 0.25s ease-in;
+            transition: all 0.25s ease-in;
+            overflow: hidden;
+            position: static !important;
+            z-index: 1;
+            margin-top: 80px;
+        }
+
+    </style>
+    
 </head>
 
 <body class="dashboard">
@@ -145,7 +162,7 @@
                                         <a href="lock.html" class="dropdown-item">
                                             <i class="icofont-lock"></i>Lock
                                         </a>
-                                        <a href="signin.html" class="dropdown-item logout">
+                                        <a href="#" onclick="logout()" class="dropdown-item logout">
                                             <i class="icofont-logout"></i> Logout
                                         </a>
                                     </div>

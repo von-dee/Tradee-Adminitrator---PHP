@@ -56,6 +56,11 @@
     border-top: none;
   }
 
+    .trans_button{
+        background: none;
+        border: none;
+    }
+
 </style>
 
 <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
@@ -122,7 +127,21 @@
             <div class="col-xxl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Transaction</h4>
+                        <div class="row" style="width: 100%;">
+                            <div class="col-10">
+                                <h4 class="card-title">Transaction</h4>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="trans_button" data-toggle="modal" data-target="#EventsModal">
+                                    <span style="font-size: 1.5em;"><i class="icofont-list"></i></span>
+                                </button>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="trans_button" data-toggle="modal" data-target="#SettingsModal">
+                                    <span style="font-size: 1.5em;"><i class="icofont-settings"></i></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
 
@@ -822,14 +841,26 @@
 
     evtSource.onmessage = function(e) {
         var newElement = document.createElement("li");
-        var val =JSON.parse(e.data);
+
+        data = JSON.parse(e.data);
+        console.log("e.data");
+        console.log(data.response);
+        console.log(data.activities);
+
+        var val = data.response;
+        var activities = data.activities;
+
+
         var str='';
+        var acts='';
         // console.log('msg',JSON.parse(e.data));
      
         //   newElement.textContent = "message: " + e.data;
         //   eventList.appendChild(newElement); 
 
-        var useCommission = false;
+        console.log("usecommission");
+        console.log(document.getElementById("usecommission").checked);
+        var useCommission = document.getElementById("usecommission").checked;
         
         var equity_figure_arr=[];
         var mark_down_arr=[];
@@ -1100,8 +1131,10 @@
 
                     if ((timeData[ii].time === toTimestamp(datefm.substring(0,16)+":00")) && arr_times.includes(unixToNormalDate(timeData[ii].time)) == false) {
                         // if(markers.some(item => item.time !== timeData[ii].time) ){
-
-                            
+                        
+                        arr_times.push(unixToNormalDate(timeData[ii].time));
+                        console.log("arr_times");
+                        console.log(arr_times);
 
                         if(element.TRD_ENTRY_SIGNAL ==='Sell'){
                             if (markers.includes({ time: timeData[ii].time, position: 'aboveBar', color: '#e91e63', shape: 'arrowDown', text: 'Sell' }) === false){
@@ -1144,6 +1177,21 @@
            
         }  
 
+
+
+
+        for (const i in activities) {
+            
+            if (Object.hasOwnProperty.call(activities, i)) {
+                var element = activities[i];
+                
+                acts+='<tr><td><div><b>'+element.ACT_TITLE+' subject Message</b><br><span>'+element.ACT_DESCRIPTION+'This is our message ok.</span><br><span style="font-size: 9px;float: right;">'+element.ACT_DATEADDED+'12/12/2021</span></div><hr></td></tr>'
+
+            }
+
+        }
+
+        document.getElementById("actsbody").innerHTML = acts;
         
         
 
@@ -1532,3 +1580,68 @@
         });
     }
 </script>
+
+
+
+
+
+    <!-- Buy Modal -->
+    <div class="modal fade" id="EventsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><span class="text-primary">Log Messages</span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody id="actsbody">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                            data-target="#buySuccessleModal">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Buy Modal -->
+    <div class="modal fade" id="SettingsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Settings</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-switch mb-3">
+                                            <label class="form-check-label" for="s1">
+                                                Use Commission
+                                            </label>
+                                            <input class="form-check-input" type="checkbox" id="usecommission" checked="">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                            data-target="#buySuccessleModal">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
