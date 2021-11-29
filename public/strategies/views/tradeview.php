@@ -834,7 +834,7 @@
 <script>
     var evtSource = new EventSource('public/strategies/controllers/ev.php?keys=<?php echo $keys  ?>');
     var eventList = document.querySelector('ul');
-    var markers = [];
+    
     evtSource.onerror =function(e){
         console.log('error',e);
     }
@@ -862,6 +862,7 @@
         console.log(document.getElementById("usecommission").checked);
         var useCommission = document.getElementById("usecommission").checked;
         
+        var markers = [];
         var equity_figure_arr=[];
         var mark_down_arr=[];
         
@@ -919,7 +920,7 @@
         var total_profit_percent_sell = 0;
 
         var arr_times = [];
-        var arr_times_graph=[];
+        var arr_times_graph = [];
 
 
         var netprofit  = 0;
@@ -964,7 +965,8 @@
 
                 
                 // Basic Calculations
-                
+                var element_TRD_ENTRY_PRICE = parseFloat(element.TRD_ENTRY_PRICE);
+                var element_TRD_EXIT_PRICE = parseFloat(element.TRD_EXIT_PRICE);
                 var element_TRD_PRICE = parseFloat(element.TRD_PRICE);
                 var element_TRD_CUMPROFIT = parseFloat(element.TRD_CUMPROFIT);
                 var element_TRD_RUNUP = parseFloat(element.TRD_RUNUP);
@@ -1110,14 +1112,15 @@
 
                 total_num_trades = total_num_trades + 1;
                 
+                
 
                 str+='<tr><td data-th="Wallet"><span class="bt-content">'+ x +'</span></td><td class="coin-name" data-th="Coin Name">'+
                 '<span class="bt-content"><i class="cc BTC"></i> <br> Bitcoin - BTCUSDT</span></td><td data-th="Wallet">'+entrysignal+
                 '<span class="bt-content"></span></td><td data-th="Wallet"><span class="bt-content">Entry '+element.TRD_ENTRY_SIGNAL+'</span><br>Exit <span class="bt-content">'+element.TRD_EXIT_SIGNAL+'</span></td><td data-th="Wallet"><span class="bt-content">Entry '+element.TRD_ENTRY_TYPE+
                 '</span><br>Exit <span class="bt-content">'+element.TRD_EXIT_TYPE+
                 '</span></td><td data-th="Amount"><span class="bt-content">'+element.TRD_ENTRY_DATETIME+'</span><br><span class="bt-content">'+element.TRD_EXIT_DATETIME+'</span></td><td data-th="trd_exittrigger"><span class="bt-content">'+element.TRD_EXITTRIGGER+
-                '</span></td><td data-th="trd_price"><span class="bt-content">'+element_TRD_PRICE+
-                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">$'+profit_value.toFixed(2)+' <br> '+element_TRD_PROFIT.toFixed(2)+'%</span></td><td data-th="trd_cumprofit"><span class="bt-content">$'+element_TRD_CUMPROFIT.toFixed(3)+'<br>'+cumlative_percent.toFixed(3)+'%</span></td><td data-th="trd_runup"><span class="bt-content">$'+roundup_value.toFixed(2)+' <br>'+element_TRD_RUNUP.toFixed(2)+'%</span></td><td data-th="trd_drawdown"><span class="bt-content">$'+drawdown_value.toFixed(2)+' <br> '+element_TRD_DRAWDOWN.toFixed(2)+'%</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
+                '</span></td><td data-th="trd_price"><span class="bt-content">'+element_TRD_ENTRY_PRICE.toFixed(2)+'</span> <br> <span class="bt-content">'+element_TRD_EXIT_PRICE.toFixed(2)+
+                '</span> </td><td data-th="trd_contracts"><span class="bt-content">'+element.TRD_CONTRACTS+'</span></td><td data-th="trd_profit"><span class="bt-content">$'+profit_value.toFixed(2)+' <br> '+element_TRD_PROFIT.toFixed(2)+'%</span></td><td data-th="trd_cumprofit"><span class="bt-content">$'+cumlative_percent.toFixed(3)+'<br>'+element_TRD_CUMPROFIT.toFixed(3)+'%</span></td><td data-th="trd_runup"><span class="bt-content">$'+roundup_value.toFixed(2)+' <br>'+element_TRD_RUNUP.toFixed(2)+'%</span></td><td data-th="trd_drawdown"><span class="bt-content">$'+drawdown_value.toFixed(2)+' <br> '+element_TRD_DRAWDOWN.toFixed(2)+'%</span></td><td data-th="trd_dateadded"><span class="bt-content">'+element.TRD_DATEADDED+'</span> </td></tr>';
                 // console.log(str);
 
                 
@@ -1554,6 +1557,7 @@
         // Will display time in 10:30:23 format
         var formattedTime = month + "/" + day + "/" + year + " " + hours + ':' + minutes.substr(-2);
 
+        // // console.log(formattedTime);
         // console.log(formattedTime);
 
         return formattedTime;
